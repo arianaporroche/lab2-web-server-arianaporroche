@@ -10,7 +10,7 @@ import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.http.*
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class ErrorTest {
+class IntegrationTest {
     @LocalServerPort
     private var port: Int = 0
 
@@ -18,7 +18,7 @@ class ErrorTest {
     private lateinit var restTemplate: TestRestTemplate
 
     @Test
-    fun `should return error page with title`() {
+    fun `should return home error page with title Error page`() {
         val headers = HttpHeaders()
         headers.accept = listOf(MediaType.TEXT_HTML)
         val entity = HttpEntity<String>(headers)
