@@ -1,16 +1,17 @@
 package es.unizar.webeng.lab2.time
 
-import java.time.LocalDateTime
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 // DTO definition
-data class TimeDTO(val time: LocalDateTime)
+data class TimeDTO(
+    val time: LocalDateTime,
+)
 
 // TimeProvider interface definition
 interface TimeProvider {
     fun now(): LocalDateTime
 }
-
 
 // TimeProvider service implementation
 @Service

@@ -1,14 +1,12 @@
 package es.unizar.webeng.lab2.time.controller
 
-import es.unizar.webeng.lab2.time.controller.TimeController
 import es.unizar.webeng.lab2.time.TimeProvider
+import es.unizar.webeng.lab2.time.controller.TimeController
 import es.unizar.webeng.lab2.time.toDTO
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.springframework.ui.ExtendedModelMap
 import java.time.LocalDateTime
-
 
 class TimeControllerUnitTests {
     private lateinit var controller: TimeController
@@ -19,7 +17,6 @@ class TimeControllerUnitTests {
         override fun now(): LocalDateTime = LocalDateTime.of(2025, 1, 1, 12, 0)
     }
 
-    
     @BeforeEach
     fun setup() {
         timeProvider = FakeTimeProvider()
@@ -28,8 +25,9 @@ class TimeControllerUnitTests {
 
     @Test
     fun `should return actual time json`() {
-        val time = controller.time()
-        
-        assertThat(time).isEqualTo(timeProvider.now().toDTO())
+        val expected = timeProvider.now().toDTO()
+        val result = controller.time()
+
+        assertThat(result).isEqualTo(expected)
     }
 }

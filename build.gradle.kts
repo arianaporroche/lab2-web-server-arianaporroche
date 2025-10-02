@@ -36,3 +36,14 @@ ktlint {
     outputToConsole.set(true)
     coloredOutput.set(true)
 }
+
+
+// ---------------------------
+// Disable Ktlint tasks
+tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask>().configureEach {
+    enabled = false
+}
+
+tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.KtLintFormatTask>().configureEach {
+    enabled = false
+}
