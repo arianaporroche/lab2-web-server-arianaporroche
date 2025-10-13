@@ -29,7 +29,6 @@ class TimeControllerMVCTests {
     @MockBean
     private lateinit var timeProvider: TimeProvider
 
-    
     // Define the behavior of the mocked TimeProvider, it will always return the same fixed time
     @BeforeEach
     fun setup() {
