@@ -1,5 +1,3 @@
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
-
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.kotlin.spring)
@@ -35,15 +33,4 @@ ktlint {
     verbose.set(true)
     outputToConsole.set(true)
     coloredOutput.set(true)
-}
-
-
-// ---------------------------
-// Disable Ktlint tasks
-tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask>().configureEach {
-    enabled = false
-}
-
-tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.KtLintFormatTask>().configureEach {
-    enabled = false
 }
