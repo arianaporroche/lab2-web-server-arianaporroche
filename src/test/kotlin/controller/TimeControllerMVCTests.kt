@@ -22,25 +22,31 @@ import es.unizar.webeng.lab2.time.controller.TimeController
 
 @WebMvcTest(TimeController::class)
 class TimeControllerMVCTests {
+    // MockMvc simulates HTTP requests to the controller without starting a real server
     @Autowired
     private lateinit var mockMvc: MockMvc
 
+    // @MockBean replaces the real TimeProvider bean in the Spring context with a Mockito mock
     @MockBean
     private lateinit var timeProvider: TimeProvider
 
+
+    // Define the behavior of the mocked TimeProvider, it will always return the same fixed time
     @BeforeEach
     fun setup() {
-        // We always return the same time
         given(timeProvider.now()).willReturn(LocalDateTime.of(2025, 1, 1, 12, 0))
     }
 
     @Test
     fun `should return API response as JSON`() {
+        // Expected JSON time value (in ISO_LOCAL_DATE_TIME format)
         val expectedTime =
             LocalDateTime
                 .of(2025, 1, 1, 12, 0)
                 .format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
 
+        // Perform a GET request to the /time endpoint
+        // and verify that the response has the expected status, content type, and JSON body
         mockMvc
             .perform(get("/time"))
             .andDo(print())
