@@ -9,6 +9,8 @@
 ## Description of Changes
 [Detailed description of all changes made]
 
+Documentation available at: "https://localhost:8443/swagger-ui/index.html"
+
 ## Technical Decisions
 [Explanation of technical choices made]
 

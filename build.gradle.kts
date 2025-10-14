@@ -22,6 +22,9 @@ dependencies {
     implementation(libs.spring.boot.starter.thymeleaf)
     implementation(libs.jackson.module.kotlin)
 
+    // Swagger / OpenAPI (Springdoc)
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+
     testImplementation(libs.spring.boot.starter.test)
 }
 
