@@ -27,6 +27,20 @@
         - Swagger UI: [https://localhost:8443/swagger-ui/index.html](https://localhost:8443/swagger-ui/index.html)  
         - OpenAPI JSON: [https://localhost:8443/v3/api-docs](https://localhost:8443/v3/api-docs)
 
+9. **Use Profiles to Manage Configurations**
+    - Implemented Spring Boot profiles (`dev`, `prod`) to manage environment-specific configurations.
+    - Added profile-specific services:
+        - `DevTimeService` returns a fixed deterministic time for development/testing.
+        - `ProdTimeService` returns the current server time in production.
+    - Created configuration files per profile:
+        - `application-dev.yml`
+        - `application-prod.yml`
+    - Added integration tests using `@ActiveProfiles` to verify:
+        - Correct profile-scoped bean is loaded.
+        - Sensitive properties (like keystore password) are loaded from environment variables.
+        - Profile-specific properties (server port, OpenAPI server URLs) are applied.
+        - Test-time property overrides using `DynamicPropertySource`. 
+
 
 
 ## Technical Decisions
@@ -46,7 +60,11 @@
     - Configured **bearer authentication** to demonstrate secure endpoints.
     - Example responses included via **ExampleObject** to provide realistic API output.
 
-
+9. **Use Profiles to Manage Configurations**
+    - Decided to leverage Spring Boot **profiles** to isolate environment-specific settings (`dev`, `prod`, `test`) and profile-scoped beans.  
+    - Tests ensure **correct bean selection** per profile and **sensitive data loading** from environment variables.  
+    - Profiles simplify **deployment across different environments** without changing the codebase.  
+    - `DynamicPropertySource` used to **override properties at test runtime**, ensuring reproducible test results.
 
 
     - Used environment variable $env:KEYSTORE_PASSWORD to avoid hardcoding sensitive SSL credentials.
