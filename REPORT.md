@@ -9,10 +9,13 @@
 ## Description of Changes
 [Detailed description of all changes made]
 
-Documentation available at: "https://localhost:8443/swagger-ui/index.html"
+Documentation available at: "https://localhost:8443/swagger-ui/index.html" and "https://localhost:8443/v3/api-docs"
 
 ## Technical Decisions
 [Explanation of technical choices made]
+
+Before executing (in PowerShell):
+$env:KEYSTORE_PASSWORD = "secret"
 
 ## Learning Outcomes
 [What you learned from this assignment]
