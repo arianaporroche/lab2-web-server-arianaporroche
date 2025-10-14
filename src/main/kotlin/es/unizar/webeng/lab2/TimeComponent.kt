@@ -1,5 +1,6 @@
 package es.unizar.webeng.lab2.time
 
+import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
@@ -15,8 +16,21 @@ interface TimeProvider {
 
 // TimeProvider service implementation
 @Service
-class TimeService : TimeProvider {
-    override fun now(): LocalDateTime = LocalDateTime.now()
+@Profile("default")
+class DefaultTimeService : TimeProvider {
+    override fun now() = LocalDateTime.now()
+}
+
+@Service
+@Profile("prod")
+class ProdTimeService : TimeProvider {
+    override fun now() = LocalDateTime.now()
+}
+
+@Service
+@Profile("dev")
+class DevTimeService : TimeProvider {
+    override fun now() = LocalDateTime.of(2000, 1, 1, 12, 0)
 }
 
 // Extension function to convert LocalDateTime to TimeDTO

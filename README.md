@@ -17,10 +17,21 @@ A minimal Spring Boot + Kotlin starter for Lab 2. Complete the tasks in `docs/GU
 
 ## Quick start
 ```bash
+# Build the project
 ./gradlew clean build
+
+# Run with default profile (or profile set in application.yml)
 ./gradlew bootRun
-# Default: http://localhost:8080
-# After completing SSL task: https://127.0.0.1:8443
+# Default profile (dev if set in application.yml):
+#   http://localhost:8080 (without SSL)
+#   https://127.0.0.1:8443 (with SSL)
+
+# Run with a specific profile
+./gradlew bootRun --args='--spring.profiles.active=dev'
+#   Activates the dev profile (DevTimeService)
+
+./gradlew bootRun --args='--spring.profiles.active=prod'
+#   Activates the prod profile (ProdTimeService)
 ```
 
 ## Project structure
