@@ -14,6 +14,19 @@
 - Added **extension function `toDTO()`** to transform `LocalDateTime` into `TimeDTO` cleanly.  
 - Enabled **HTTP/2 and SSL** support by configuring a self-signed certificate in `application.yml` and using a PKCS12 keystore (`localhost.p12`) with environment variable `$env:KEYSTORE_PASSWORD`.  
 
+### Bonus opportunities
+7. **Implement Swagger/OpenAPI Documentation**
+    - Implemented **Swagger/OpenAPI documentation** for the `/time` endpoint.  
+    - Added **`SwaggerConfig.kt`** to configure OpenAPI metadata (title, version, description, contact, license).  
+    - Updated **`TimeController.kt`** with `@Operation` and `@ApiResponse` annotations, including example response objects.  
+    - Integrated **HTTP Bearer security scheme** in Swagger UI.  
+    - Verified **Swagger UI** is accessible at `/swagger-ui/index.html` and API JSON spec at `/v3/api-docs`.  
+    - Optional endpoints such as `/actuator` are hidden from Swagger automatically.  
+
+    Documentation available at:  
+        - Swagger UI: [https://localhost:8443/swagger-ui/index.html](https://localhost:8443/swagger-ui/index.html)  
+        - OpenAPI JSON: [https://localhost:8443/v3/api-docs](https://localhost:8443/v3/api-docs)
+
 
 
 ## Technical Decisions
@@ -25,6 +38,21 @@
 - Used **Jackson with jackson-module-kotlin** to serialize Kotlin data classes automatically.  
 - Relied on **Ktlint** to enforce consistent Kotlin coding style and prevent build errors.  
 - Managed sensitive information (**keystore password**) through environment variables instead of hardcoding.  
+
+### Bonus opportunities
+7. **Implement Swagger/OpenAPI Documentation**
+    - Chose **Springdoc OpenAPI** for automatic documentation generation with Spring Boot.
+    - Used annotations in controller for endpoint documentation and example responses rather than writing manual YAML/JSON files.
+    - Configured **bearer authentication** to demonstrate secure endpoints.
+    - Example responses included via **ExampleObject** to provide realistic API output.
+
+
+
+
+    - Used environment variable $env:KEYSTORE_PASSWORD to avoid hardcoding sensitive SSL credentials.
+
+Before executing (in PowerShell):
+$env:KEYSTORE_PASSWORD = "secret"
 
 
 
