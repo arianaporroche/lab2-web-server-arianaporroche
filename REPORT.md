@@ -15,6 +15,13 @@
 - Enabled **HTTP/2 and SSL** support by configuring a self-signed certificate in `application.yml` and using a PKCS12 keystore (`localhost.p12`) with environment variable `$env:KEYSTORE_PASSWORD`.  
 
 ### Bonus opportunities
+3. **Verify Response Compression**
+    - Implemented integration tests to check **HTTP response compression** when the client requests it:
+        - The test sends a GET request to `/time` with the header `Accept-Encoding: gzip`.
+        - Asserts that the response includes the header `Content-Encoding: gzip`, confirming compression.
+        - Ensures that the header `Vary: Accept-Encoding` is always present, which is necessary for correct HTTP caching behavior.
+        - Additional test confirms that small responses not meeting the compression threshold are not compressed, while still returning the `Vary` header.
+
 7. **Implement Swagger/OpenAPI Documentation**
     - Implemented **Swagger/OpenAPI documentation** for the `/time` endpoint.  
     - Added **`SwaggerConfig.kt`** to configure OpenAPI metadata (title, version, description, contact, license).  
@@ -54,6 +61,12 @@
 - Managed sensitive information (**keystore password**) through environment variables instead of hardcoding.  
 
 ### Bonus opportunities
+3. **Verify Response Compression**
+    - Decided to test **HTTP response compression** via integration tests, verifying:
+        - The `Content-Encoding: gzip` header is present when requested.
+        - The `Vary: Accept-Encoding` header is always returned.
+        - Small responses below the compression threshold are not compressed, preserving correctness.
+
 7. **Implement Swagger/OpenAPI Documentation**
     - Chose **Springdoc OpenAPI** for automatic documentation generation with Spring Boot.
     - Used annotations in controller for endpoint documentation and example responses rather than writing manual YAML/JSON files.

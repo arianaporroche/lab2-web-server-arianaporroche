@@ -58,6 +58,7 @@ See `docs/GUIDE.md` for detailed steps:
 ./gradlew test
 ./gradlew test --tests "es.unizar.webeng.lab2.IntegrationTest"
 ./gradlew test --tests "es.unizar.webeng.lab2.SwaggerIntegrationTest"
+./gradlew test --tests "es.unizar.webeng.lab2.time.controller.CompressionTest"
 ./gradlew test --tests "es.unizar.webeng.lab2.time.controller.TimeControllerUnitTests"
 ./gradlew test --tests "es.unizar.webeng.lab2.time.controller.TimeControllerMVCTests"
 ```
