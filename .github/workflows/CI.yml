@@ -15,12 +15,19 @@ jobs:
         with:
           java-version: '21'
           distribution: 'adopt'
+
+      - name: Export keystore password
+        run: echo "KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
+
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
+
       - name: Test with Gradle
         run: ./gradlew check --no-daemon
+        
       - name: Cleanup Gradle Cache
         run: |
           rm -f ~/.gradle/caches/modules-2/modules-2.lock
