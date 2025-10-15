@@ -16,6 +16,8 @@ A minimal Spring Boot + Kotlin starter for Lab 2. Complete the tasks in `docs/GU
 - OpenSSL (for SSL steps in the GUIDE)
 
 ## Quick start
+If you use SSL, set the keystore password in the environment variable `$env:KEYSTORE_PASSWORD`
+
 ```bash
 # Build the project
 ./gradlew clean build
@@ -28,10 +30,10 @@ A minimal Spring Boot + Kotlin starter for Lab 2. Complete the tasks in `docs/GU
 
 # Run with a specific profile
 ./gradlew bootRun --args='--spring.profiles.active=dev'
-#   Activates the dev profile (DevTimeService)
+#   Activates the dev profile
 
 ./gradlew bootRun --args='--spring.profiles.active=prod'
-#   Activates the prod profile (ProdTimeService)
+#   Activates the prod profile
 ```
 
 ## Project structure
@@ -61,6 +63,15 @@ See `docs/GUIDE.md` for detailed steps:
 ./gradlew test --tests "es.unizar.webeng.lab2.time.controller.CompressionTest"
 ./gradlew test --tests "es.unizar.webeng.lab2.time.controller.TimeControllerUnitTests"
 ./gradlew test --tests "es.unizar.webeng.lab2.time.controller.TimeControllerMVCTests"
+```
+### Manual testing with curl
+#### Without Compression
+```bash
+curl -k -i https://127.0.0.1:8443/time
+```
+#### With Compression
+```bash
+curl -k -i -H "Accept-Encoding: gzip" https://127.0.0.1:8443/time
 ```
 
 ## Bonus opportunities
