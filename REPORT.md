@@ -22,15 +22,6 @@
         - Ensures that the header `Vary: Accept-Encoding` is always present, which is necessary for correct HTTP caching behavior.
         - Additional test confirms that small responses not meeting the compression threshold are not compressed, while still returning the `Vary` header.
 
-| Nº execution        | Without compression | With compression    |
-|---------------------|---------------------|---------------------|
-| 1                   | 0.002149 s          | 0.002938 s          |
-| 2                   | 0.002392 s          | 0.003858 s          |
-| 3                   | 0.003101 s          | 0.003254 s          |
-| 4                   | 0.002108 s          | 0.003178 s          |
-| 5                   | 0.002790 s          | 0.003310 s          |
-| TOTAL               |                     |                     |
-
 7. **Implement Swagger/OpenAPI Documentation**
     - Implemented **Swagger/OpenAPI documentation** for the `/time` endpoint.  
     - Added **`SwaggerConfig.kt`** to configure OpenAPI metadata (title, version, description, contact, license).  
